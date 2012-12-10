@@ -1,0 +1,61 @@
+<?php
+//foreach ($this->Guestbook as $item) {
+//    echo $item-> id.'==='.$item->text."</br>";
+//}
+?>
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headLink(); ?>
+    <?php echo $this->headScript(); ?>
+</head>
+
+<body>
+<?php echo $this->layout()->content; ?>
+<p><a href="<?php echo $this->url(
+    array(
+
+        'controller' => 'page',
+        'action'     => 'sign'
+    ),
+    'sign',
+    true) ?>">Sign Our Guestbook</a></p>
+
+<p> Sort by date <a href="<?php echo $this->url(array('field_name' => 'created','sort' => 'DESC'), 'goods') ?>">&darr;</a>
+    <a href="<?php echo $this->url(array('field_name' => 'created','sort' => 'ASC'), 'goods') ?>">&uarr;</a>
+
+
+ Sort by name <a href="<?php echo $this->url(array('field_name' => 'user','sort' => 'DESC'), 'goods') ?>">&darr;</a>
+    <a href="<?php echo $this->url(array('field_name' => 'user','sort' => 'ASC'), 'goods') ?>">&uarr;</a>
+
+
+
+ Sort by email <a href="<?php echo $this->url(array('field_name' => 'email','sort' => 'DESC'), 'goods') ?>">&darr;</a>
+    <a href="<?php echo $this->url(array('field_name' => 'email','sort' => 'ASC'), 'goods') ?>">&uarr;</a>
+
+</p>
+
+Guestbook Entries: <hr> <br />
+
+<TABLE  width="100%">
+<?php foreach ($this->paginator as $entry): ?>
+
+    <TR>
+
+        <TD><?php echo 'username '.htmlspecialchars($this->escape($entry->user))."<br />".
+            "<br />".nl2br($entry->comment)."<br />".
+            '<a href="/data_upload/'.$entry->file.'" rel="lightbox" title="my caption">
+                <img src ="/data_upload/'.$entry->file.'" height="100px" rel="lightbox" >
+            </img></a>';?></TD>
+    </TR>
+
+    <TR align=right>
+        <TD><?php  echo 'date  '.$this->escape($entry->created) ?> <hr></TD>
+    </TR>
+
+    <?php endforeach ?>
+</TABLE>
+    <?= $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+</body>
+</html>
