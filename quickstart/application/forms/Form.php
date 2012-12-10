@@ -82,24 +82,17 @@ class Application_Form_Form extends Zend_Form
             )
         ));
 
-        //add file
+
         $element = new Zend_Form_Element_File('file');
         $element->setLabel('Upload an image:')
             ->setDestination(realpath(APPLICATION_PATH . '/../public/data_upload'));
-        // ensure only 1 file
-        $element->addValidator('Count', false, 1);
-        // limit to 100K
-        $element->addValidator('Size', false, 102400);
-        // only JPEG, PNG, and GIFs
-        $element->addValidator('Extension', false, 'jpg,png,gif');
-        $this->addElement($element, 'file');
 
-;
-        //add file
-      //  $file = $this->createElement('file', 'photourl');
-       // $file->setLabel('Add photo');
-       // $file->setRequired(true);
-       // $this->addElement($file);
+        $element->addValidator('Count', false, 1);
+
+        $element->addValidator('Size', false, 102400);
+
+        $element->addValidator('Extension', false, 'jpg,png,gif,txt');
+        $this->addElement($element, 'file');
 
 
         // Add a captcha

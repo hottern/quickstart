@@ -19,7 +19,7 @@ class PageController extends Zend_Controller_Action
         $result = $guestbook->fetchAll();
         $page=$this->_getParam('page',1);
         $paginator = Zend_Paginator::factory($result);
-        $paginator->setItemCountPerPage(3);
+        $paginator->setItemCountPerPage(25);
         $paginator->setCurrentPageNumber($page);
         $this->view->paginator=$paginator;
         $paginator = Zend_Paginator::factory($result);

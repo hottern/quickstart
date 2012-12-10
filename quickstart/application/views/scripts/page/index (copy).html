@@ -1,3 +1,8 @@
+<?php
+//foreach ($this->Guestbook as $item) {
+//    echo $item-> id.'==='.$item->text."</br>";
+//}
+?>
 <?php echo $this->doctype(); ?>
 <html>
 <head>
@@ -31,17 +36,17 @@
 
 </p>
 
-Guestbook Entries: <hr> <br/>
+Guestbook Entries: <hr> <br />
 
 <TABLE  width="100%">
 <?php foreach ($this->paginator as $entry): ?>
 
     <TR>
 
-        <TD><?php echo 'username '.htmlspecialchars($this->escape($entry->user))."<br/>".
-            "<br/>".nl2br($entry->comment)."<br/>".
+        <TD><?php echo 'username '.htmlspecialchars($this->escape($entry->user))."<br />".
+            "<br />".nl2br($entry->comment)."<br />".
             '<a href="/data_upload/'.$entry->file.'" rel="lightbox" title="my caption">
-                <img src ="/data_upload/'.$entry->file.'" height="100px" rel="lightbox">
+                <img src ="/data_upload/'.$entry->file.'" height="100px" rel="lightbox" >
             </img></a>';?></TD>
     </TR>
 
